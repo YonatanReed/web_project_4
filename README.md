@@ -12,3 +12,4 @@ it was based on Figma model, using html, JS and CSS. fonts were imported from go
 **Github**
 
 - [Link to the project in Githun]()
+  https://yonatanreed.github.io/web_project_4/

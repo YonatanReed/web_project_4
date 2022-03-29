@@ -1,11 +1,15 @@
 .header {
-  margin: 45px auto 0;
+  margin: 0 auto 0;
   max-width: 880px;
 }
 
 .header__hr {
   margin: 40px auto 0;
   border: 1px solid #545454;
+}
+
+.header__logo {
+  margin-top: 45px;
 }
 
 @media screen and (max-width: 900px) {
