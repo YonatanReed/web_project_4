@@ -1,0 +1,35 @@
+.element {
+  background-color: #fff;
+  border-radius: 10px;
+}
+
+.element__image {
+  display: block;
+  max-width: 282px;
+}
+
+.element__info {
+  max-width: 246px;
+  display: flex;
+  justify-content: space-between;
+  margin: 25px 15px 31px 21px;
+}
+
+.element__paragraph {
+  margin: 0;
+  color: #000;
+  font-weight: 900;
+  font-size: 24px;
+  line-height: 1.2;
+}
+
+.element__like {
+  width: 21px;
+  height: 19px;
+  background-image: url(../images/like.png);
+  background-repeat: no-repeat;
+  background-position: center;
+  align-self: center;
+  border: none;
+  background-color: transparent;
+}

@@ -1,0 +1,22 @@
+.header {
+  margin: 45px auto 0;
+  max-width: 880px;
+}
+
+.header__hr {
+  margin: 40px auto 0;
+  border: 1px solid #545454;
+}
+
+@media screen and (max-width: 900px) {
+  .header {
+    max-width: 100%;
+  }
+  .header__logo {
+    margin: 28px auto 0 27px;
+    max-width: 126px;
+  }
+  .header__hr {
+    margin-top: 31px;
+  }
+}

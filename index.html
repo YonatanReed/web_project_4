@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="author" content="Yonatan Reed" />
+    <title>Around The U.S.</title>
+    <meta
+      name="description"
+      content="an interactive page for photo sharing and liking"
+    />
+    <link rel="stylesheet" href="./pages/index.css" />
+  </head>
+  <body class="page">
+    <header class="header">
+      <img
+        src="./images/logo.png"
+        class="header__logo"
+        alt="Around the U.S. logo"
+      />
+      <hr class="header__hr" />
+    </header>
+    <div class="page">
+    <section class="profile">
+        <img src="./images/image1.png" class="avatar" alt="Jacques Cousteau" />
+        <div class="profile-info">
+          <p class="profile__name">
+            Jacques Cousteau </p>
+            <button type="button" class="profile__edit-btn"></button>
+            <p class="profile__job">Explorer</p>    
+      </div>
+      <button type="button" class="profile__add-btn"></button>
+    </section>
+<section class="elements">
+  <div class="element">
+   <img 
+    src="./images/picture1.png"
+    class="element__image"
+    alt="landscape" />
+    <div class="element__info"> 
+      <p class="element__paragraph"> Yosemite Valley</p>
+      <button type="button" class="element__like element__like_active"></button>
+    </div>
+  </div>
+  <div class="element">
+    <img 
+     src="./images/picture2.png"
+     class="element__image"
+     alt="landscape" />
+     <div class="element__info"> 
+       <p class="element__paragraph"> Lake Louise</p>
+       <button type="button" class="element__like element__like_active"></button>
+     </div>
+   </div>
+   <div class="element">
+    <img 
+     src="./images/picture3.png"
+     class="element__image"
+     alt="landscape" />
+     <div class="element__info"> 
+       <p class="element__paragraph"> Bald Mountains</p>
+       <button type="button" class="element__like element__like_active"></button>
+     </div>
+   </div>
+   <div class="element">
+    <img 
+     src="./images/picture4.png"
+     class="element__image"
+     alt="landscape" />
+     <div class="element__info"> 
+       <p class="element__paragraph"> Latemar</p>
+       <button type="button" class="element__like element__like_active"></button>
+     </div>
+   </div>
+   <div class="element">
+    <img 
+     src="./images/picture5.png"
+     class="element__image"
+     alt="landscape" />
+     <div class="element__info"> 
+       <p class="element__paragraph"> Vanoise Nationa...</p>
+       <button type="button" class="element__like element__like_active"></button>
+     </div>
+   </div>
+   <div class="element">
+    <img 
+     src="./images/picture6.png"
+     class="element__image"
+     alt="landscape" />
+     <div class="element__info"> 
+       <p class="element__paragraph"> Lago di Braies</p>
+       <button type="button" class="element__like element__like_active"></button>
+     </div>
+   </div>
+</section>
+<footer class="footer">
+  <p class="footer__text"> © 2021 Around The U.S. </p>
+</footer>
+
+<div class="popup-box">
+  <div class="popup-box__container">
+  <h1 class="popup-box__edit-profile">Edit profile</h1>
+  <button type="button" class="popup__close-btn"></button>
+    <form class="form" name="edit-form">
+    <input type="text" name="name" placeholder=" Name" class="popup__input popup__input_type_name" value="Jacques Cousteau">
+    <input type="text" name="job" placeholder=" About me" class="popup__input popup__input_type_job" value="Explorer">
+    <button type="submit" class="popup__save-btn">Save</button>
+    </form>
+  </div>
+</div>
+<script src="./pages/scripts.js"></script> 
+  </body>
+</html>
