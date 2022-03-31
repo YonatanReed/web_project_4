@@ -20,7 +20,7 @@
   box-sizing: border-box;
 }
 
-.popup__close-btn {
+.popup-box__close-btn {
   position: absolute;
   width: 40px;
   height: 40px;
@@ -32,6 +32,11 @@
   background-color: transparent;
   border: none;
   transition: opacity 1s ease-out;
+}
+
+.popup-box__close-btn:hover {
+  opacity: 0.6;
+  cursor: pointer;
 }
 
 .popup-box__edit-profile {
@@ -55,7 +60,7 @@
     font-size: 18px;
     line-height: 1.2;
   }
-  .popup__close-btn {
+  .popup-box__close-btn {
     width: 26px;
     height: 26px;
     right: 0;

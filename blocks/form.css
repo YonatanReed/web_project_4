@@ -2,7 +2,7 @@
   margin-top: 54px;
 }
 
-.popup__input {
+.form__input {
   border: none;
   border-bottom: 1px solid rgba(0, 0, 0, 0.2);
   width: 100%;
@@ -14,7 +14,7 @@
   overflow: hidden;
 }
 
-.popup__save-btn {
+.form__save-btn {
   margin-top: 18px;
   width: 100%;
   height: 50px;
@@ -27,13 +27,8 @@
   transition: opacity 1s ease-out;
 }
 
-.popup__save-btn:hover {
+.form__save-btn:hover {
   opacity: 0.8;
-  cursor: pointer;
-}
-
-.popup__close-btn:hover {
-  opacity: 0.6;
   cursor: pointer;
 }
 
@@ -42,10 +37,10 @@
     margin-top: 76px;
   }
 
-  .popup__input {
+  .form__input {
     padding-bottom: 9px;
   }
-  .popup__save-btn {
+  .form__save-btn {
     margin-top: 16px;
   }
 }

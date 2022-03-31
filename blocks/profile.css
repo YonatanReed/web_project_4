@@ -6,13 +6,13 @@
   align-items: center;
 }
 
-.avatar {
+.profile__avatar {
   max-width: 120px;
   max-height: 120px;
   border-radius: 50%;
 }
 
-.profile-info {
+.profile__info {
   margin: 0 auto 0 30px;
   max-width: 415px;
   display: flex;
@@ -86,7 +86,7 @@
     flex-direction: column;
     justify-content: center;
   }
-  .profile-info {
+  .profile__info {
     display: flex;
     justify-content: center;
     row-gap: 14px;
