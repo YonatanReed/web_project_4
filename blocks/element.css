@@ -26,10 +26,16 @@
 .element__like {
   width: 21px;
   height: 19px;
-  background-image: url(../images/like.png);
+  background-image: url(../images/like-btn.svg);
   background-repeat: no-repeat;
   background-position: center;
   align-self: center;
   border: none;
   background-color: transparent;
+}
+
+.element__like:hover {
+  cursor: pointer;
+  color: #000;
+  opacity: 0.5;
 }
