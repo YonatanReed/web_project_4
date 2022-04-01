@@ -1,18 +1,21 @@
 .popup-box {
+  width: 100%;
+  height: 100%;
   position: fixed;
   top: 0;
   left: 0;
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 100%;
-  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
   display: none;
+  box-sizing: border-box;
 }
 
 .popup-box__container {
   width: 430px;
-  background: #ffffff;
+  max-height: 330px;
+  background: #fff;
   box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.15);
   border-radius: 10px;
   position: relative;
@@ -21,12 +24,12 @@
 }
 
 .popup-box__close-btn {
-  position: absolute;
   width: 40px;
   height: 40px;
+  position: absolute;
   top: -40px;
   right: -40px;
-  background-image: url(../images/Close-Icon.png);
+  background-image: url(../images/Close-Icon.svg);
   background-repeat: no-repeat;
   background-size: cover;
   background-color: transparent;
@@ -53,7 +56,8 @@
 
 @media screen and (max-width: 650px) {
   .popup-box__container {
-    width: 282px;
+    max-width: 282px;
+    max-height: 322px;
     padding: 25px 22px 25px;
   }
   .popup-box__edit-profile {
