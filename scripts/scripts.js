@@ -118,7 +118,7 @@ function createElement(userElement) {
   function openPicturePopup() {
     const modal = document.querySelector(".popup-box_image");
     const modalImg = document.querySelector(".popup-box__image");
-    const captionText = document.querySelector(".caption");
+    const captionText = document.querySelector(".popup-box__caption");
 
     console.log(modalImg);
     modal.classList.toggle("popup-box_opened");
