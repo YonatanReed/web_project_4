@@ -2,8 +2,8 @@
 
 ### Overview
 
-This project simulates a site adjusted both on large screens (1280px) and on mobile (320px) where users can add photos and like them (not yet implemented), using and editing a profile consisting of name and discription.
-it was based on Figma model, using html, JS and CSS. fonts were imported from google fonts and images compressed using tinypng.com
+This project simulates a site adjusted both on large screens (1280px) and on mobile (320px) where users can add and like photos, using a personal profile consisting of name and discription.
+The project was based on the linked Figma model, using html, JS and CSS. fonts were imported from google fonts and images compressed using tinypng.com.
 
 **Figma**
 

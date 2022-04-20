@@ -94,16 +94,13 @@
   .profile {
     flex-direction: column;
     justify-content: center;
+    margin: 40px auto;
+    max-width: 80%;
   }
 
   .profile__add-btn {
     width: 282px;
     margin-top: 36px;
-  }
-
-  .profile {
-    margin: 40px auto;
-    max-width: 80%;
   }
 
   .profile__name {
