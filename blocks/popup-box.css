@@ -11,7 +11,7 @@
   box-sizing: border-box;
   visibility: hidden;
   opacity: 0;
-  transition: all 0s, opacity 0.5s linear;
+  transition: visibility 0s 0.5s, opacity 0.5s linear;
 }
 
 .popup-box__container {
@@ -63,7 +63,7 @@
 }
 
 .popup-box_opened {
-  display: flex;
+  transition: visibility 0s, opacity 0.5s linear;
   visibility: visible;
   opacity: 1;
 }
