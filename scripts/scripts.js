@@ -123,9 +123,10 @@ function createCard(data) {
     const modal = document.querySelector(".popup-box_image");
     const modalImg = document.querySelector(".popup-box__image");
     const captionText = document.querySelector(".popup-box__caption");
+    const imageElement = cardElement.querySelector(".element__image");
     openPopup(modal);
-    modalImg.src = cardElement.querySelector(".element__image").src;
-    modalImg.alt = cardElement.querySelector(".element__image").alt;
+    modalImg.src = imageElement.src;
+    modalImg.alt = imageElement.alt;
     captionText.innerHTML = cardElement.querySelector(
       ".element__paragraph"
     ).textContent;
