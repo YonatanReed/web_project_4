@@ -97,8 +97,8 @@ function handleAddFormSubmit(event) {
 }
 
 function createCard(data) {
-  const TemplateElement = document.querySelector("#temple-element").content;
-  const cardElement = TemplateElement.querySelector(".element").cloneNode(true);
+  const templateElement = document.querySelector("#temple-element").content;
+  const cardElement = templateElement.querySelector(".element").cloneNode(true);
   const cardTitle = cardElement.querySelector(".element__paragraph");
   const cardPhoto = cardElement.querySelector(".element__image");
 
