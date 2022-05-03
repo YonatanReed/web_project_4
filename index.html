@@ -39,25 +39,41 @@
     <footer class="footer">
       <p class="footer__text">© 2021 Around The U.S.</p>
     </footer>
-
+    popup-box_add
     <div class="popup-box popup-box_add">
       <div class="popup-box__container">
         <h2 class="popup-box__edit-profile">New place</h2>
         <button type="button" class="popup-box__close-btn"></button>
-        <form class="form form-add" name="add-form">
-          <input
-            type="text"
-            name="title"
-            placeholder=" Title"
-            class="form__input form__input_type_title"
-          />
-          <input
-            type="text"
-            name="image-link"
-            placeholder=" Image link"
-            class="form__input form__input_type_image-link"
-          />
-          <button type="submit" class="form__save-btn">Create</button>
+        <form class="form form-add" name="add-form" novalidate>
+          <fieldset class="form__set">
+            <input
+              type="text"
+              name="title"
+              placeholder=" Title"
+              class="form__input form__input_type_title"
+              id="title"
+              required
+              minlength="1"
+              maxlength="30"
+            />
+            <span class="title-error form__input-error"></span>
+            <input
+              type="url"
+              name="image-link"
+              placeholder=" Image link"
+              class="form__input form__input_type_image-link"
+              id="image-link"
+              required
+            />
+            <span class="image-link-error form__input-error"></span>
+            <button
+              type="submit"
+              class="form__save-btn form__save-btn_disabled"
+              disabled
+            >
+              Create
+            </button>
+          </fieldset>
         </form>
       </div>
     </div>
@@ -66,22 +82,36 @@
       <div class="popup-box__container">
         <h2 class="popup-box__edit-profile">Edit profile</h2>
         <button type="button" class="popup-box__close-btn"></button>
-        <form class="form form-edit" name="edit-form">
-          <input
-            type="text"
-            name="name"
-            placeholder=" Name"
-            class="form__input form__input_type_name"
-            value="Jacques Cousteau"
-          />
-          <input
-            type="text"
-            name="job"
-            placeholder=" About me"
-            class="form__input form__input_type_job"
-            value="Explorer"
-          />
-          <button type="submit" class="form__save-btn">Save</button>
+
+        <form class="form form-edit" name="edit-form" novalidate>
+          <fieldset class="form__set">
+            <input
+              type="text"
+              name="name"
+              placeholder=" Name"
+              class="form__input form__input_type_name"
+              id="name"
+              value="Jacques Cousteau"
+              required
+              minlength="2"
+              maxlength="40"
+            />
+            <span class="name-error form__input-error"></span>
+            <input
+              type="text"
+              name="job"
+              placeholder=" About me"
+              class="form__input form__input_type_job"
+              id="job"
+              value="Explorer"
+              required
+              minlength="2"
+              maxlength="200"
+            />
+            <span class="job-error form__input-error"></span>
+
+            <button type="submit" class="form__save-btn">Save</button>
+          </fieldset>
         </form>
       </div>
     </div>
@@ -106,5 +136,6 @@
     </template>
 
     <script src="./scripts/scripts.js"></script>
+    <script src="./scripts/validate.js"></script>
   </body>
 </html>

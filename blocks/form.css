@@ -48,3 +48,28 @@
     margin-top: 16px;
   }
 }
+
+.form__input_type_error {
+  border-bottom-color: red;
+  margin: 0;
+}
+
+.form__save-btn_disabled {
+  background-color: #fff;
+  color: #000;
+  opacity: 0.2;
+  pointer-events: none;
+}
+
+.form__set {
+  padding: 0;
+  margin: 0;
+  border: 0;
+}
+
+.popup__error_visible {
+  margin-bottom: 10px;
+  color: red;
+  font-size: 12px;
+  line-height: 1.25;
+}

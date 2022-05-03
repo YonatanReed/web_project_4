@@ -45,6 +45,8 @@ const initialCards = [
 openFormEditButton.addEventListener("click", function () {
   openPopup(popupEdit);
 });
+// added now
+openFormEditButton.addEventListener("click", fillProfileForm);
 
 openFormAddButton.addEventListener("click", function () {
   openPopup(popupAdd);
@@ -56,6 +58,9 @@ closeFormEditButton.addEventListener("click", function () {
 closeFormAddButton.addEventListener("click", function () {
   closePopup(popupAdd);
 });
+
+closeFormAddButton.addEventListener("click", resetForm);
+
 closePictureButton.addEventListener("click", function () {
   closePopup(popupBoxImage);
 });
@@ -65,20 +70,44 @@ addForm.addEventListener("submit", handleAddFormSubmit);
 
 function openPopup(popup) {
   popup.classList.add("popup-box_opened");
+  popup.addEventListener("click", closeOnClick);
+  document.addEventListener("keydown", closeOnEsc);
+}
+
+function closeOnClick(e) {
+  if (e.target.classList.contains("popup-box")) {
+    closePopup(e.target);
+    if (e.target.classList.contains("popup-box_add")) {
+      resetForm();
+    }
+  }
+}
+
+function closeOnEsc(e) {
+  if (e.key === "Escape") {
+    const popupOpenedType = document.querySelector(".popup-box_opened");
+    closePopup(popupOpenedType);
+    if (popupOpenedType.classList.contains("popup-box_add")) {
+      resetForm();
+    }
+  }
 }
 
 function closePopup(popup) {
   popup.classList.remove("popup-box_opened");
+  popup.removeEventListener("click", closeOnClick);
+  document.removeEventListener("keydown", closeOnEsc);
 }
 
 function fillProfileForm() {
-  profileName.textContent = nameInput.value;
-  profileJob.textContent = jobInput.value;
+  nameInput.value = profileName.textContent;
+  jobInput.value = profileJob.textContent;
 }
 
 function handleEditFormSubmit(event) {
   event.preventDefault();
-  fillProfileForm();
+  profileName.textContent = nameInput.value;
+  profileJob.textContent = jobInput.value;
   closePopup(popupEdit);
 }
 
@@ -91,9 +120,15 @@ function handleAddFormSubmit(event) {
   };
 
   elements.prepend(createCard(newCard));
-
-  addForm.reset();
+  resetForm();
   closePopup(popupAdd);
+}
+
+function resetForm() {
+  const buttonElement = addForm.querySelector(".form__save-btn");
+  addForm.reset();
+  buttonElement.disabled = true;
+  buttonElement.classList.add("form__save-btn_disabled");
 }
 
 function createCard(data) {
