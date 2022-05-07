@@ -38,14 +38,14 @@ const hasInvalidInput = (inputList) => {
 
 const toggleButtonState = (inputList, buttonElement, formObject) => {
   if (hasInvalidInput(inputList)) {
-    enableButtron(buttonElement, formObject);
+    disableButton(buttonElement, formObject);
   } else {
     buttonElement.classList.remove(formObject.inactiveButtonClass);
     buttonElement.disabled = false;
   }
 };
 
-function enableButtron(buttonElement, formObject) {
+function disableButton(buttonElement, formObject) {
   buttonElement.classList.add(formObject.inactiveButtonClass);
   buttonElement.disabled = true;
 }

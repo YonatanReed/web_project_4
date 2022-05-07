@@ -44,9 +44,8 @@ const initialCards = [
 
 openFormEditButton.addEventListener("click", function () {
   openPopup(popupEdit);
+  fillProfileForm();
 });
-
-openFormEditButton.addEventListener("click", fillProfileForm);
 
 openFormAddButton.addEventListener("click", function () {
   openPopup(popupAdd);
@@ -60,8 +59,6 @@ closeFormEditButton.addEventListener("click", function () {
 closeFormAddButton.addEventListener("click", function () {
   closePopup(popupAdd);
 });
-
-closeFormAddButton.addEventListener("click", () => resetForm(addForm));
 
 closePictureButton.addEventListener("click", function () {
   closePopup(popupBoxImage);
@@ -133,7 +130,7 @@ const formObject = {
 function resetForm(form) {
   const buttonElement = form.querySelector(".form__save-btn");
   form.reset();
-  enableButtron(buttonElement, formObject);
+  disableButton(buttonElement, formObject);
 }
 
 function createCard(data) {
