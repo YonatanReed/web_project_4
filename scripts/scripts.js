@@ -45,12 +45,14 @@ const initialCards = [
 openFormEditButton.addEventListener("click", function () {
   openPopup(popupEdit);
 });
-// added now
+
 openFormEditButton.addEventListener("click", fillProfileForm);
 
 openFormAddButton.addEventListener("click", function () {
   openPopup(popupAdd);
 });
+
+openFormAddButton.addEventListener("click", () => resetForm(addForm));
 
 closeFormEditButton.addEventListener("click", function () {
   closePopup(popupEdit);
@@ -59,7 +61,7 @@ closeFormAddButton.addEventListener("click", function () {
   closePopup(popupAdd);
 });
 
-closeFormAddButton.addEventListener("click", resetForm);
+closeFormAddButton.addEventListener("click", () => resetForm(addForm));
 
 closePictureButton.addEventListener("click", function () {
   closePopup(popupBoxImage);
@@ -77,9 +79,6 @@ function openPopup(popup) {
 function closeOnClick(e) {
   if (e.target.classList.contains("popup-box")) {
     closePopup(e.target);
-    if (e.target.classList.contains("popup-box_add")) {
-      resetForm();
-    }
   }
 }
 
@@ -87,9 +86,6 @@ function closeOnEsc(e) {
   if (e.key === "Escape") {
     const popupOpenedType = document.querySelector(".popup-box_opened");
     closePopup(popupOpenedType);
-    if (popupOpenedType.classList.contains("popup-box_add")) {
-      resetForm();
-    }
   }
 }
 
@@ -120,15 +116,24 @@ function handleAddFormSubmit(event) {
   };
 
   elements.prepend(createCard(newCard));
-  resetForm();
+  resetForm(addForm);
   closePopup(popupAdd);
 }
 
-function resetForm() {
-  const buttonElement = addForm.querySelector(".form__save-btn");
-  addForm.reset();
-  buttonElement.disabled = true;
-  buttonElement.classList.add("form__save-btn_disabled");
+const formObject = {
+  formSelector: ".form",
+  inputSelector: ".form__input",
+  fieldsetSelector: ".form__set",
+  submitButtonSelector: ".form__save-btn",
+  inactiveButtonClass: "form__save-btn_disabled",
+  inputErrorClass: "form__input_type_error",
+  errorClass: "popup__error_visible",
+};
+
+function resetForm(form) {
+  const buttonElement = form.querySelector(".form__save-btn");
+  form.reset();
+  enableButtron(buttonElement, formObject);
 }
 
 function createCard(data) {
