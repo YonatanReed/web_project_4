@@ -1,3 +1,7 @@
+import Card from "./Card.js";
+import FormValidator from "./FormValidator.js";
+import { openPopup, closePopup } from "./utils.js";
+
 const popupEdit = document.querySelector(".popup-box_edit");
 const popupAdd = document.querySelector(".popup-box_add");
 const profileName = document.querySelector(".profile__name");
@@ -15,6 +19,7 @@ const elements = document.querySelector(".elements");
 const addForm = document.querySelector(".form-add");
 const popupBoxImage = document.querySelector(".popup-box_image");
 const closePictureButton = popupBoxImage.querySelector(".popup-box__close-btn");
+
 const initialCards = [
   {
     name: "Yosemite Valley",
@@ -42,6 +47,15 @@ const initialCards = [
   },
 ];
 
+const formObject = {
+  inputSelector: ".form__input",
+  fieldsetSelector: ".form__set",
+  submitButtonSelector: ".form__save-btn",
+  inactiveButtonClass: "form__save-btn_disabled",
+  inputErrorClass: "form__input_type_error",
+  errorClass: "popup__error_visible",
+};
+
 openFormEditButton.addEventListener("click", function () {
   openPopup(popupEdit);
   fillProfileForm();
@@ -66,31 +80,6 @@ closePictureButton.addEventListener("click", function () {
 
 editForm.addEventListener("submit", handleEditFormSubmit);
 addForm.addEventListener("submit", handleAddFormSubmit);
-
-function openPopup(popup) {
-  popup.classList.add("popup-box_opened");
-  popup.addEventListener("click", closeOnClick);
-  document.addEventListener("keydown", closeOnEsc);
-}
-
-function closeOnClick(e) {
-  if (e.target.classList.contains("popup-box")) {
-    closePopup(e.target);
-  }
-}
-
-function closeOnEsc(e) {
-  if (e.key === "Escape") {
-    const popupOpenedType = document.querySelector(".popup-box_opened");
-    closePopup(popupOpenedType);
-  }
-}
-
-function closePopup(popup) {
-  popup.classList.remove("popup-box_opened");
-  popup.removeEventListener("click", closeOnClick);
-  document.removeEventListener("keydown", closeOnEsc);
-}
 
 function fillProfileForm() {
   nameInput.value = profileName.textContent;
@@ -117,60 +106,24 @@ function handleAddFormSubmit(event) {
   closePopup(popupAdd);
 }
 
-const formObject = {
-  formSelector: ".form",
-  inputSelector: ".form__input",
-  fieldsetSelector: ".form__set",
-  submitButtonSelector: ".form__save-btn",
-  inactiveButtonClass: "form__save-btn_disabled",
-  inputErrorClass: "form__input_type_error",
-  errorClass: "popup__error_visible",
-};
-
 function resetForm(form) {
   const buttonElement = form.querySelector(".form__save-btn");
   form.reset();
-  disableButton(buttonElement, formObject);
+  addFormValidator.disableButton();
 }
 
-function createCard(data) {
-  const templateElement = document.querySelector("#temple-element").content;
-  const cardElement = templateElement.querySelector(".element").cloneNode(true);
-  const cardTitle = cardElement.querySelector(".element__paragraph");
-  const cardPhoto = cardElement.querySelector(".element__image");
-
-  cardTitle.textContent = data.name;
-  cardPhoto.src = data.link;
-  cardPhoto.alt = data.name;
-
-  const like = cardElement.querySelector(".element__like");
-  like.addEventListener("click", toggleElementLikeActive);
-  function toggleElementLikeActive() {
-    like.classList.toggle("element__like_active");
-  }
-  const deleteBtn = cardElement.querySelector(".element__delete-icon ");
-  deleteBtn.addEventListener("click", deleteElement);
-  function deleteElement() {
-    cardElement.remove();
-  }
-  cardElement
-    .querySelector(".element__image")
-    .addEventListener("click", openPicturePopup);
-  function openPicturePopup() {
-    const modal = document.querySelector(".popup-box_image");
-    const modalImg = document.querySelector(".popup-box__image");
-    const captionText = document.querySelector(".popup-box__caption");
-    const imageElement = cardElement.querySelector(".element__image");
-    openPopup(modal);
-    modalImg.src = imageElement.src;
-    modalImg.alt = imageElement.alt;
-    captionText.innerHTML = cardElement.querySelector(
-      ".element__paragraph"
-    ).textContent;
-  }
+function createCard(element) {
+  const card = new Card(element, "#template-element");
+  const cardElement = card.generateCard();
   return cardElement;
 }
 
 initialCards.forEach(function (element) {
   elements.append(createCard(element));
 });
+
+const editFormValidator = new FormValidator(formObject, editForm);
+editFormValidator.enableValidation();
+
+const addFormValidator = new FormValidator(formObject, addForm);
+addFormValidator.enableValidation();
