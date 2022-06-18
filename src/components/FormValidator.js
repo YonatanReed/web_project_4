@@ -24,12 +24,22 @@ class FormValidator {
     this._submitButton.disabled = true;
   }
 
+  enableButton() {
+    this._submitButton.classList.remove(this._inactiveButtonClass);
+    this._submitButton.disabled = false;
+  }
+
+  resetErrors(){
+    this._inputList.forEach((input)=>{
+      this._hideInputError(input);
+    });
+  }
+
   _toggleButtonState() {
     if (this._hasInvalidInput()) {
       this.disableButton();
     } else {
-      this._submitButton.classList.remove(this._inactiveButtonClass);
-      this._submitButton.disabled = false;
+      this.enableButton();
     }
   }
 

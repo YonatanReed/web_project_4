@@ -9,16 +9,22 @@ function closeOnEsc(e) {
     closePopup(popupOpenedType);
   }
 }
+
 function closePopup(popup) {
   popup.classList.remove("popup-box_opened");
-  popup.removeEventListener("click", closeOnClick);
+  popup.removeEventListener("mousedown", closeOnClick);
   document.removeEventListener("keydown", closeOnEsc);
 }
 
 function openPopup(popup) {
   popup.classList.add("popup-box_opened");
-  popup.addEventListener("click", closeOnClick);
+  popup.addEventListener("mousedown", closeOnClick);
   document.addEventListener("keydown", closeOnEsc);
 }
 
-export { openPopup, closePopup };
+function resetForm(form, formValidator) {
+  form.reset();
+  formValidator.disableButton();
+}
+
+export { openPopup, closePopup, resetForm };
