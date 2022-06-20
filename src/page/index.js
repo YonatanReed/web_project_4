@@ -26,11 +26,8 @@ const addPopup = new PopupWithForm(".popup-box_add", (inputeValues) => {
     name: inputeValues.title,
     link: inputeValues["image-link"],
   };
-  const card = new Card(newCard, "#template-element", () => {
-    imagePopup.open(newCard.name, newCard.link);
-  });
-  const cardElement = card.generateCard();
 
+  const cardElement = createCard(newCard);
   defaultCardList.prependItem(cardElement);
 });
 
@@ -43,6 +40,14 @@ const userInfo = new UserInfo({
   userNameSelector: ".profile__name",
   userJobSelector: ".profile__job",
 });
+
+function createCard(item) {
+  const card = new Card(item, "#template-element", () => {
+    imagePopup.open(item.name, item.link);
+  });
+  const cardElement = card.generateCard();
+  return cardElement;
+}
 
 // listerners
 openFormEditButton.addEventListener("click", function () {
@@ -64,11 +69,7 @@ const defaultCardList = new Section(
   {
     items: initialCards,
     renderer: (item) => {
-      const card = new Card(item, "#template-element", () => {
-        imagePopup.open(item.name, item.link);
-      });
-      const cardElement = card.generateCard();
-      defaultCardList.addItem(cardElement);
+      defaultCardList.addItem(createCard(item));
     },
   },
   ".elements"
