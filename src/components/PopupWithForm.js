@@ -1,11 +1,13 @@
 import Popup from "./Popup";
 
 class PopupWithForm extends Popup {
-  constructor(popupSelector, submitHandler) {
+  constructor({ popupSelector, submitHandler }) {
     super(popupSelector);
     this.submitHandler = submitHandler;
     this._form = this._popup.querySelector(".form");
     this._inputList = Array.from(this._form.querySelectorAll(".form__input"));
+    this._submitButton = this._popup.querySelector(".form__save-btn");
+    this._submitButtonText = this._submitButton.textContent;
   }
 
   _getInputValues() {
@@ -15,6 +17,12 @@ class PopupWithForm extends Popup {
     });
 
     return inputeValues;
+  }
+
+  setInputValues(data) {
+    this._inputList.forEach((input) => {
+      input.value = data[input.name];
+    });
   }
 
   setEventListeners() {
@@ -29,6 +37,12 @@ class PopupWithForm extends Popup {
   close() {
     super.close();
     this._form.reset();
+  }
+
+  renderLoading(isLoading) {
+    isLoading
+      ? (this._submitButton.textContent = "Saving...")
+      : (this._submitButton.textContent = this._submitButtonText);
   }
 }
 

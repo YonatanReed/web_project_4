@@ -22,15 +22,18 @@
     </header>
     <main class="main">
       <section class="profile">
-        <img
-          src="<%=require('./images/image1.png')%>"
-          class="profile__avatar"
-          alt="Jacques Cousteau"
-        />
+        <div class="profile__image">
+          <img
+            src="<%=require('./images/image1.png')%>"
+            class="profile__avatar"
+            alt="Jacques Cousteau"
+          />
+          <span class="profile__edit-picture"></span>
+        </div>
         <div class="profile__info">
-          <h1 class="profile__name">Jacques Cousteau</h1>
+          <h1 class="profile__name"></h1>
           <button type="button" class="profile__edit-btn"></button>
-          <p class="profile__job">Explorer</p>
+          <p class="profile__job"></p>
         </div>
         <button type="button" class="profile__add-btn"></button>
       </section>
@@ -39,6 +42,7 @@
     <footer class="footer">
       <p class="footer__text">© 2021 Around The U.S.</p>
     </footer>
+
     <div class="popup-box popup-box_add">
       <div class="popup-box__container">
         <h2 class="popup-box__edit-profile">New place</h2>
@@ -122,15 +126,57 @@
         <p class="popup-box__caption"></p>
       </div>
     </div>
+
     <template id="template-element">
       <div class="element">
         <button class="element__delete-icon"></button>
         <img src="#" class="element__image" alt="#" />
         <div class="element__info">
           <h2 class="element__paragraph"></h2>
-          <button type="button" class="element__like"></button>
+          <div class="element__info-like">
+            <button type="button" class="element__like"></button>
+            <span class="element__like_number">0</span>
+          </div>
         </div>
       </div>
     </template>
+    <div class="popup-box popup-box_delete">
+      <div class="popup-box__container">
+        <form>
+          <button class="popup-box__close-btn" type="button"></button>
+          <h2 class="popup-box-title">Are you sure?</h2>
+          <button type="submit" class="form__save-btn">Yes</button>
+        </form>
+      </div>
+    </div>
+
+    <div class="popup-box popup-box_avatar">
+      <div class="popup-box__container">
+        <h2 class="popup-box-title popup-box-title_avatar">
+          Change profile picture
+        </h2>
+        <form name="form-avatar" class="form form-avatar" novalidate>
+          <fieldset class="form__set">
+            <button class="popup-box__close-btn" type="button"></button>
+            <input
+              type="url"
+              class="form__input form__input_avatar"
+              id="avatar"
+              name="avatar"
+              placeholder="profile picture link"
+              required
+            />
+            <span class="avatar-error form__input-error"></span>
+
+            <button
+              type="submit"
+              class="form__button-save form__save-btn_avatar form__save-btn"
+            >
+              Save
+            </button>
+          </fieldset>
+        </form>
+      </div>
+    </div>
   </body>
 </html>

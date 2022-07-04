@@ -4,33 +4,10 @@ const openFormEditButton = document.querySelector(".profile__edit-btn");
 const openFormAddButton = document.querySelector(".profile__add-btn");
 const editForm = document.querySelector(".form-edit");
 const addForm = document.querySelector(".form-add");
-
-const initialCards = [
-  {
-    name: "Yosemite Valley",
-    link: "https://code.s3.yandex.net/web-code/yosemite.jpg",
-  },
-  {
-    name: "Lake Louise",
-    link: "https://code.s3.yandex.net/web-code/lake-louise.jpg",
-  },
-  {
-    name: "Bald Mountains",
-    link: "https://code.s3.yandex.net/web-code/bald-mountains.jpg",
-  },
-  {
-    name: "Latemar",
-    link: "https://code.s3.yandex.net/web-code/latemar.jpg",
-  },
-  {
-    name: "Vanoise National Park",
-    link: "https://code.s3.yandex.net/web-code/vanoise.jpg",
-  },
-  {
-    name: "Lago di Braies",
-    link: "https://code.s3.yandex.net/web-code/lago.jpg",
-  },
-];
+const avatarForm = document.querySelector(".form-avatar");
+const token = "0b69bf19-42d1-4bf8-9ff1-9675ed788767";
+const groupID = "cohort-3-en";
+const openEditAvatar = document.querySelector(".profile__edit-picture");
 
 const formObject = {
   inputSelector: ".form__input",
@@ -48,6 +25,9 @@ export {
   openFormAddButton,
   editForm,
   addForm,
-  initialCards,
+  avatarForm,
   formObject,
+  token,
+  groupID,
+  openEditAvatar,
 };

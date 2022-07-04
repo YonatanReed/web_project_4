@@ -52,6 +52,16 @@
   background-color: transparent;
 }
 
+.element__like_number{
+display: block;
+color: #000;
+width: 9px;
+height: 13px;
+text-align: center;
+font-size: 13px;
+margin: 3px auto;
+}
+
 .element__like:hover {
   cursor: pointer;
   color: #000;
