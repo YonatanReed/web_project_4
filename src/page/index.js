@@ -6,7 +6,7 @@ import PopupWithForm from "../components/PopupWithForm.js";
 import PopupWithSubmit from "../components/PopupWithSubmit.js";
 import UserInfo from "../components/UserInfo.js";
 import Section from "../components/Section.js";
-import { api } from "../components/Api.js";
+import { api } from "../utils/Api.js";
 import {
   nameInput,
   jobInput,
@@ -27,10 +27,10 @@ const userInfo = new UserInfo({
   avatarSelector: ".profile__avatar",
 });
 
-const serverCardList = new Section(
+const cardList = new Section(
   {
     renderer: (item) => {
-      serverCardList.appendItem(createCard(item));
+      cardList.appendItem(createCard(item));
     },
   },
   ".elements"
@@ -39,15 +39,13 @@ const serverCardList = new Section(
 // popups
 const editPopup = new PopupWithForm({
   popupSelector: ".popup-box_edit",
-  submitHandler: (data) => {
-    const initialInfo = userInfo.getUserInfo();
-    const initialData = { name: initialInfo.name, "about-me": initialInfo.job };
-    editPopup.setInputValues(initialData);
+  handleSubmit: (data) => {
     editPopup.renderLoading(true);
     api
       .updateUserInfo(data.name, data.job)
       .then(() => {
         userInfo.setUserInfo(data.name, data.job);
+        editPopup.close();
       })
       .catch(console.log)
       .finally(() => {
@@ -58,7 +56,7 @@ const editPopup = new PopupWithForm({
 
 const addPopup = new PopupWithForm({
   popupSelector: ".popup-box_add",
-  submitHandler: (inputeValues) => {
+  handleSubmit: (inputeValues) => {
     addPopup.renderLoading(true);
     const newCard = {
       name: inputeValues.title,
@@ -67,9 +65,9 @@ const addPopup = new PopupWithForm({
     api
       .uploadCard(newCard)
       .then((res) => {
-        const cardList = document.querySelector(".elements");
         const cardElement = createCard(res);
-        cardList.prepend(cardElement);
+        cardList.prependItem(cardElement);
+        addPopup.close();
       })
       .catch(console.log)
       .finally(() => {
@@ -84,13 +82,14 @@ const deletePopup = new PopupWithSubmit(".popup-box_delete");
 
 const avatarPopup = new PopupWithForm({
   popupSelector: ".popup-box_avatar",
-  submitHandler: (data) => {
+  handleSubmit: (data) => {
     avatarPopup.renderLoading(true);
     api
       .updateAvatar(data.avatar)
 
       .then((res) => {
         userInfo.setAvatar(res.avatar);
+        avatarPopup.close();
       })
       .catch(console.log)
       .finally(() => {
@@ -122,7 +121,7 @@ Promise.all([api.getUserInfo(), api.getInitialCards()])
     userInfo.setUserInfo(userData.name, userData.about, userData["_id"]);
     userInfo.setAvatar(userData.avatar);
 
-    serverCardList.renderItems(cardsData);
+    cardList.renderItems(cardsData);
   })
   .catch(console.log);
 
@@ -140,7 +139,7 @@ function createCard(item) {
       deletePopup.setAction(() => {
         deletePopup.renderLoading(true);
         api
-          .deleteCard(item["_id"])
+          .deleteCard(item._id)
           .then(() => {
             card.removeCard();
           })

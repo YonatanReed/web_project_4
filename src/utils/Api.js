@@ -4,20 +4,20 @@ class Api {
     this._headers = headers;
   }
 
-  _fetchResponse(res) {
+  _processResponse(res) {
     return res.ok ? res.json() : Promise.reject(`Error: ${res.status}`);
   }
 
   getInitialCards() {
     return fetch(`${this._baseUrl}/cards`, {
       headers: this._headers,
-    }).then(this._fetchResponse);
+    }).then(this._processResponse);
   }
 
   getUserInfo() {
     return fetch(`${this._baseUrl}/users/me`, {
       headers: this._headers,
-    }).then(this._fetchResponse);
+    }).then(this._processResponse);
   }
 
   updateUserInfo(name, about) {
@@ -39,21 +39,21 @@ class Api {
         name: name,
         link: link,
       }),
-    }).then(this._fetchResponse);
+    }).then(this._processResponse);
   }
 
   likeCard(id) {
     return fetch(`${this._baseUrl}/cards/likes/${id}`, {
       method: "PUT",
       headers: this._headers,
-    }).then(this._fetchResponse);
+    }).then(this._processResponse);
   }
 
   unLikeCard(id) {
     return fetch(`${this._baseUrl}/cards/likes/${id}`, {
       method: "DELETE",
       headers: this._headers,
-    }).then(this._fetchResponse);
+    }).then(this._processResponse);
   }
 
   updateAvatar(link) {
@@ -63,19 +63,14 @@ class Api {
       body: JSON.stringify({
         avatar: link,
       }),
-    }).then(this._fetchResponse);
+    }).then(this._processResponse);
   }
 
   deleteCard(cardId) {
     return fetch(`${this._baseUrl}/cards/${cardId}`, {
       method: "DELETE",
       headers: this._headers,
-    }).then((res) => {
-      if (res.ok) {
-        return res.json();
-      }
-      return Promise.reject(`Error: ${res.status}`);
-    });
+    }).then(this._processResponse);
   }
 }
 

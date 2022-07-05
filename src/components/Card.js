@@ -50,9 +50,9 @@ class Card {
 
   removeCard() {
     this._element.remove();
+    this._element = null;
   }
 
-  // new v
   _renderLikes() {
     this._likeCounter.textContent = this._likes.length;
 
@@ -69,21 +69,14 @@ class Card {
   }
 
   isLiked() {
-    const userLike = this._likes
-      .map((user) => user["_id"])
-      .find((id) => id === this._userId);
-
-    return userLike;
+    return this._likes.some((user) => user._id === this._userId);
   }
 
   _toggleLike = () => this._like.classList.toggle("element__like_active");
 
   _setEventListeners() {
-    //  this._like.addEventListener("click", this._toggleLike);
     this._like.addEventListener("click", this._handleLikeClick);
-
     this._deleteBtn.addEventListener("click", this._handleDeleteButton);
-
     this._element
       .querySelector(".element__image")
       .addEventListener("click", this._handleCardClick);
